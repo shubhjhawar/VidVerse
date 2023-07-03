@@ -28,7 +28,7 @@ export const topics = [
     icon: <GiLipstick />,
   },
   {
-    name: 'animals',
+    name: 'nature',
     icon: <FaPaw />,
   },
   {

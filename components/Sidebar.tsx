@@ -5,6 +5,9 @@ import Link from 'next/link';
 import GoogleLogin from 'react-google-login';
 import { AiFillHome, AiOutlineMenu } from 'react-icons/ai';
 import {ImCancelCircle} from 'react-icons/im';
+import Discover from './Discover';
+import SuggestedAccounts from './SuggestedAccounts';
+import Footer from './Footer';
 
 const Sidebar = () => {
   //to operate sidebar
@@ -38,28 +41,25 @@ const Sidebar = () => {
               <div className='px-2 py-4 hidden xl:block'>
                 <p className='text-gray-400'>Log in to blah blah</p>
                 <div className='pr-4 '>
-                  <button className='bg-white text-lg text-[#F51997]'>
+                  <button className='bg-white text-lg text-[#F51997] border-[1px] border-[#F51997] font-semibold px-6 py-3 rounded-md outline-none w-full mt-3 hover:text-white hover:bg-[#F51997] cursor-pointer'>
                   <GoogleLogin 
                     clientId=''
-                    buttonText="Login"
-                    // render ={(renderProps) => {
-                    //   <button
-                    //     className='bg-white text-lg text-[#F51997] border-[1px] border-[#F51997] font-semibold px-6 py-3 rounded-md outline-none w-full mt-3'
-                    //     onClick = {renderProps.onClick}
-                    //     disabled = {renderProps.disabled}
-                    //   >
-                    //     Log in
-                    //   </button>
-                    // }}
+                    buttonText='Sign in with Google'
                     onSuccess={() => {}}
                     onFailure={() => {}}
                     cookiePolicy={'single-host-origin'}
+                    // style={{border:3}}
                   />
+                    Log In
                   </button>
                   
                 </div>
               </div>
             )}
+
+            <Discover />
+            <SuggestedAccounts />
+            <Footer  />
         </div>
       )}
     </div>
