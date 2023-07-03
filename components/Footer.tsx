@@ -13,6 +13,7 @@ const List = ({items, mt} : {items:string[], mt:boolean}) => (
                 >{item}</p>
             ))}
         </div>
+        {/* checking  */}
     </div>
 )
 
