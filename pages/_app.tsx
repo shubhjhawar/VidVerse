@@ -5,8 +5,10 @@ import {useState, useEffect} from 'react';
 import "../app/globals.css";
 import Navbar from '@/components/Navbar';
 import Sidebar from '@/components/Sidebar';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 const MyApp = ({Component, pageProps}: AppProps) => {
+    // gotta learn why we do this SSR
     const [isSSR, setIsSSR] = useState(true);
 
     useEffect(() => {
@@ -16,7 +18,8 @@ const MyApp = ({Component, pageProps}: AppProps) => {
     if(isSSR) return null;
     
     return(
-      <div>
+      // we gotta wrap the whole app in google o auth in order to use google login as per new guidelines
+      <GoogleOAuthProvider clientId={`${process.env.NEXT_PUBLIC_API_TOKEN}`}>
         <Navbar />
         <div className='flex gap-6 md:gap-20'>
             <div className='h-[92vh] overflow-hidden xl:hover:overflow-auto'>
@@ -26,7 +29,7 @@ const MyApp = ({Component, pageProps}: AppProps) => {
                 <Component {...pageProps} />
             </div>
         </div>
-      </div>
+      </GoogleOAuthProvider>
       )
 }
 
