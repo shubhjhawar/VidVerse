@@ -40,7 +40,7 @@ const Sidebar = () => {
             {!userProfile && (
               <div className='px-2 py-4 hidden xl:block'>
                 <p className='text-gray-400'>Log in to blah blah</p>
-                <div className='pr-4 '>
+                {/* <div className='pr-4 '>
                   <button className='bg-white text-lg text-[#F51997] border-[1px] border-[#F51997] font-semibold px-6 py-3 rounded-md outline-none w-full mt-3 hover:text-white hover:bg-[#F51997] cursor-pointer'>
                   <GoogleLogin 
                     clientId=''
@@ -53,7 +53,7 @@ const Sidebar = () => {
                     Log In
                   </button>
                   
-                </div>
+                </div> */}
               </div>
             )}
 
