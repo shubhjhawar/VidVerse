@@ -1,6 +1,8 @@
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
 
+export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+
 // 2. now we make this function
 // it takes data from response (data from google account)
 export const createOrGetUser = async (response:any, addUser:any) => {
@@ -23,7 +25,7 @@ export const createOrGetUser = async (response:any, addUser:any) => {
 
   
   //3. post request which will take the user data and give it to the frontend
-  await axios.post(`http://localhost:3000/api/auth`, user);
+  await axios.post(`${BASE_URL}api/auth`, user);
 
 };
 
