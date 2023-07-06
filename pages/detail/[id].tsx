@@ -9,6 +9,9 @@ import { HiVolumeUp, HiVolumeOff } from 'react-icons/hi';
 import axios from "axios";
 import { BASE_URL } from '@/utils';
 import { Video } from '@/types';
+import useAuthStore from '@/store/authStore';
+import LikeButton from '@/components/LikeButton';
+import Comments from '@/components/Comments';
 
 interface IProps {
   postDetails: Video, 
@@ -20,6 +23,7 @@ const Detail = ({postDetails} : IProps) => {
   const [playing, setPlaying] = useState(false);
   const [isVideoMuted, setIsVideoMuted] = useState(false);
   const router = useRouter();
+  const {userProfile} = useAuthStore();
 
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -39,6 +43,16 @@ const Detail = ({postDetails} : IProps) => {
       videoRef.current.muted = isVideoMuted;
     }
   }, [post, isVideoMuted])
+
+  const handleLike = async (like:boolean) => {
+    if(userProfile) {
+      const response = await axios.put(`${BASE_URL}/api/like`, {
+        userId : userProfile._id,
+        postId : post._id,
+        like
+      })
+    }
+  }
 
   if(!post) return null;
 
@@ -76,7 +90,7 @@ const Detail = ({postDetails} : IProps) => {
             <button onClick={() => setIsVideoMuted(false)}>
               <HiVolumeOff className='text-white text-2xl lg:text-4xl'/>
             </button>
-            
+
           ) : (
             <button onClick={() => setIsVideoMuted(true)}>
               <HiVolumeUp className='text-white text-2xl lg:text-4xl'/>
@@ -108,10 +122,9 @@ const Detail = ({postDetails} : IProps) => {
             {/* USERNAME */}
             <div >
               <Link href="/">
-                <div className='flex items-center gap-2'>
+                <div className='mt-3 flex flex-col gap-2'>
                   <p className='flex gap-2 items-center md:text-md font-bold text-primary'>{post.postedBy.userName}
-                  {`
-                  `}
+                  {` `}
                   <GoVerified 
                   className='text-blue-400 text-md '/>
                   </p>
@@ -121,7 +134,22 @@ const Detail = ({postDetails} : IProps) => {
                 </div>
               </Link>
             </div>
+        </div>
 
+        <p className='px-10 text-lg text-gray-600'>{post.caption}</p>
+
+        <div className='mx-10 px-10'>
+            {userProfile && (
+              <LikeButton 
+                handleLike= {() => handleLike(true)}
+                handleDislike = {() => handleDislike(true)}
+              />
+            )}
+        </div>
+
+        <div>
+          <Comments 
+          />
         </div>
         
 
