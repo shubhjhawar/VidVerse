@@ -25,7 +25,7 @@ export const createOrGetUser = async (response:any, addUser:any) => {
 
   
   //3. post request which will take the user data and give it to the frontend
-  await axios.post(`${BASE_URL}api/auth`, user);
+  await axios.post(`${BASE_URL}/api/auth`, user);
 
 };
 
