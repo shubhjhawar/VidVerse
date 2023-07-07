@@ -5,6 +5,7 @@ import { GoVerified } from 'react-icons/go';
 
 import useAuthStore from '@/store/authStore';
 import NoResults from './NoResults';
+import { IUser } from '@/types';
 
 interface IProps {
   isPostingComment : Boolean,
@@ -23,12 +24,48 @@ interface IComment{
 
 const Comments = ({comment, setComment, addComment, comments, isPostingComment}: IProps) => {
   const { userProfile } = useAuthStore();
+  const {fetchAllUsers, allUsers} = useAuthStore();
 
   return (
-    <div className='border-t-2 border-gray-200 pt-4 px-10 mx-10  bg-[#f8f8f8] border-b-2 lg:pb-0 pb-[100px]'>
+    <div className='border-t-2 border-gray-200 pt-4 px-10 mx-10  bg-[#f8f8f8] border-b-2 lg:pb-0 pb-[100px] lg:w-[650px]'>
       <div className='overflow-scroll lg:h-[235px]'>
         {comments?.length ? (
-          <div>videos</div>
+          comments.map((item, idx) => (
+            <>
+              {allUsers.map((user : IUser) => (
+                user._id === (item.postedBy._id || item.postedBy._ref) && (
+                  <div className='p-2 items-center' key={idx}>
+                    <Link href={`/profile/${user._id}`}>
+                    <div className='flex items-start gap-3 '>
+                      <div className='w-8 h-8'>
+                        <Image 
+                        src={user.image}
+                        width={34}
+                        height={34}
+                        className='roundede-full'
+                        alt = "user profile"
+                        />
+                      </div>
+                      <div className='block'>
+                          <p className='flex gap-1 items-center text-md font-bold text-primary lowercase'>
+                            {user.userName.replaceAll(' ','')} 
+                            <GoVerified className='text-blue-400'/>
+                          </p>
+                          <p className='capitalize text-gray-400 text-xs'>
+                            {user.userName}
+                          </p>
+                        </div>
+                      </div>
+                    </Link>
+
+                    <div>
+                      <p>{item.comment}</p>
+                    </div>
+                  </div>
+                )
+              ))}
+            </>
+          ))
         ):(
           <NoResults text="No Comments Yet!"/>
         )}
@@ -41,7 +78,7 @@ const Comments = ({comment, setComment, addComment, comments, isPostingComment}:
               value={comment}
               onChange={(e) => setComment(e.target.value)}
               placeholder='Add Comment...'
-              className='bg-primary px-6 py-4 text-md font-medium b-2 w-[250px] lg:w-[350px] md:w-[700px] border-gray-100 focus:outline-none focus:border-2 focus:border-gray-300 flex-1 rounded-lg'
+              className='bg-primary px-6 py-4 text-md font-medium b-2 w-[250px] lg:w-[550px] md:w-[300px] border-gray-100 focus:outline-none focus:border-2 focus:border-gray-300 flex-1 rounded-lg'
             />
             <button className='text-md text-gray-400'
               onClick={() => {}}
