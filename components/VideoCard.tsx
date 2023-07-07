@@ -47,7 +47,7 @@ const VideoCard:NextPage<IProps>  = ({post}) => {
             {/* PROFILE PICTURE */}
             <div className='md:w-16 md:h-16 w-10 h-10'>
               {/* image cannot be called directly in Link, hence it is done like this */}
-              <Link href="/">
+              <Link href={`/profile/${post.postedBy._id}`}>
                 <>
                 <Image 
                   width={62}
@@ -63,7 +63,7 @@ const VideoCard:NextPage<IProps>  = ({post}) => {
 
             {/* USERNAME */}
             <div >
-              <Link href="/">
+              <Link href={`/profile/${post.postedBy._id}`}>
                 <div className='flex items-center gap-2'>
                   <p className='flex gap-2 items-center md:text-md font-bold text-primary'>{post.postedBy.userName}
                   {`
