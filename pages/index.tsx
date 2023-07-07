@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Video } from '@/types';
 import VideoCard from '@/components/VideoCard';
 import NoResults from '@/components/NoResults';
+import { BASE_URL } from '@/utils';
 
 //this is used to specify the details of the object being fetched by the api
 interface IProps {
@@ -13,7 +14,9 @@ interface IProps {
 // here videos is passed as an argument from down(backend part) and 
 // since we are using typescript we have to say that it is of type 'IProps' which is the interface declared above
 const Home = ({videos}: IProps) => {
-  console.log(videos)
+  // console.log(videos)
+  
+
   return (
     <div className='flex flex-col gap-10 videos h-full'>
       {videos.length ? (
@@ -30,7 +33,7 @@ const Home = ({videos}: IProps) => {
 export const getServerSideProps = async () => {
   // destructured response as data
   // get reuqest
-  const {data} = await axios.get(`http://localhost:3000/api/post`);
+  const {data} = await axios.get(`${BASE_URL}/api/post`);
   
 
   // this is how u return data from the api

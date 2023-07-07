@@ -6,21 +6,27 @@ import "../app/globals.css";
 import Navbar from '@/components/Navbar';
 import Sidebar from '@/components/Sidebar';
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import { useRouter } from 'next/router';
 
 const MyApp = ({Component, pageProps}: AppProps) => {
-    // gotta learn why we do this SSR
-    const [isSSR, setIsSSR] = useState(true);
 
-    useEffect(() => {
-      setIsSSR(false);
-    }, [])
+  const router = useRouter();
+  const isImageDetailsPage = router.pathname.startsWith('/detail/');
 
-    if(isSSR) return null;
-    
-    return(
-      // we gotta wrap the whole app in google o auth in order to use google login as per new guidelines
-      <GoogleOAuthProvider clientId={`${process.env.NEXT_PUBLIC_API_TOKEN}`}>
-        <Navbar />
+  // gotta learn why we do this SSR
+  const [isSSR, setIsSSR] = useState(true);
+
+  useEffect(() => {
+    setIsSSR(false);
+  }, [])
+
+  if(isSSR) return null;
+  
+  return(
+    // we gotta wrap the whole app in google o auth in order to use google login as per new guidelines
+    <GoogleOAuthProvider clientId={`${process.env.NEXT_PUBLIC_API_TOKEN}`}>
+      <div className='xl:w-[1000px] m-auto overflow-hidden h-[100vh]'>
+        {!isImageDetailsPage && <Navbar />}
         <div className='flex gap-6 md:gap-20'>
             <div className='h-[92vh] overflow-hidden xl:hover:overflow-auto'>
                 <Sidebar />
@@ -29,8 +35,9 @@ const MyApp = ({Component, pageProps}: AppProps) => {
                 <Component {...pageProps} />
             </div>
         </div>
-      </GoogleOAuthProvider>
-      )
+      </div>
+    </GoogleOAuthProvider>
+    )
 }
 
 export default MyApp
