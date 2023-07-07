@@ -14,7 +14,9 @@ interface IProps {
 // here videos is passed as an argument from down(backend part) and 
 // since we are using typescript we have to say that it is of type 'IProps' which is the interface declared above
 const Home = ({videos}: IProps) => {
-  console.log(videos)
+  // console.log(videos)
+  
+
   return (
     <div className='flex flex-col gap-10 videos h-full'>
       {videos.length ? (
