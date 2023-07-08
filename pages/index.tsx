@@ -30,17 +30,30 @@ const Home = ({videos}: IProps) => {
   )
 }
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async ({
+  query : {topic}
+} : {
+  query : {topic : string}
+ }) => {
+
+  let response = null;
+
   // destructured response as data
   // get reuqest
-  const {data} = await axios.get(`${BASE_URL}/api/post`);
+  if(topic)
+  {
+    response = await axios.get(`${BASE_URL}/api/discover/${topic}`);
+    
+  } else {
+    response = await axios.get(`${BASE_URL}/api/post`);
+  }
   
 
   // this is how u return data from the api
   // video prop would now be used above
   return {
     props: {
-      videos: data
+      videos: response.data
     }
   }
 }

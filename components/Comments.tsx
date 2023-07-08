@@ -27,8 +27,8 @@ const Comments = ({comment, setComment, addComment, comments, isPostingComment}:
   const {fetchAllUsers, allUsers} = useAuthStore();
 
   return (
-    <div className='border-t-2 border-gray-200 pt-4 px-10 mx-10  bg-[#f8f8f8] border-b-2 lg:pb-0 pb-[100px] lg:w-[650px]'>
-      <div className='overflow-scroll lg:h-[235px]'>
+    <div className='border-t-2 border-gray-200 pt-4 px-10 mx-10 bg-[#f8f8f8] border-b-2 lg:pb-0 pb-[100px] lg:w-[650px] '>
+      <div className='lg:overflow-scroll md:overflow-y-auto lg:h-[235px]'>
         {comments?.length ? (
           comments.map((item, idx) => (
             <>
@@ -42,7 +42,7 @@ const Comments = ({comment, setComment, addComment, comments, isPostingComment}:
                         src={user.image}
                         width={34}
                         height={34}
-                        className='roundede-full'
+                        className='rounded-full'
                         alt = "user profile"
                         />
                       </div>
@@ -72,15 +72,15 @@ const Comments = ({comment, setComment, addComment, comments, isPostingComment}:
       </div>
 
       {userProfile && (
-        <div className='absolute bottom-0 left-0 pb-6 px-2 md:px-10'>
+        <div className='absolute left-0 bottom-0 pb-6 px-2 md:px-10'>
           <form onSubmit={addComment} className='flex gap-4'>
             <input
               value={comment}
               onChange={(e) => setComment(e.target.value)}
               placeholder='Add Comment...'
-              className='bg-primary px-6 py-4 text-md font-medium b-2 w-[250px] lg:w-[550px] md:w-[300px] border-gray-100 focus:outline-none focus:border-2 focus:border-gray-300 flex-1 rounded-lg'
+              className='bg-primary px-6 py-4 text-md font-medium b-2 w-[460px] lg:w-[530px] md:w-[640px] border-gray-100 focus:outline-none focus:border-2 focus:border-gray-300 flex-1 rounded-lg'
             />
-            <button className='text-md text-gray-400'
+            <button className='text-md text-gray-400 md:w-1/4 rounded-2xl hover:bg-primary hover:text-black lg:p-0'
               onClick={() => {}}
             >
               {isPostingComment ? 'Commenting...' : 'Comment'}
