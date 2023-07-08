@@ -7,6 +7,7 @@ import {topics} from '../utils/constants';
 const Discover = () => {
   //to get the topic from URL
   const router = useRouter();
+  
   const {topic} = router.query;
 
   //css styles for discover topics
