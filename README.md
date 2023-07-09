@@ -1,34 +1,59 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# VidVerse
 
-## Getting Started
+## Overview
+VidVerse is a web application that provides a platform for users to share and discover short videos. Inspired by TikTok, VidVerse offers a similar user experience, allowing users to upload, like, comment, and explore videos created by others. The application is built using Next.js with TypeScript and leverages various technologies for backend data storage and user authentication.
 
-First, run the development server:
+## Features
+- **User Authentication**: VidVerse utilizes Google Auth to provide a seamless login and signup experience for both new and existing users.
+- **Responsive Design**: The application is designed to be responsive, adapting to different screen sizes and providing an optimal viewing experience across devices.
+- **Video Upload**: Users can effortlessly upload their own videos to share with the VidVerse community. The upload process is streamlined and user-friendly.
+- **Interactions**: Users can like/unlike videos and leave comments, fostering engagement and interaction within the community.
+- **User Profiles**: Each user has a dedicated profile page where others can explore the videos they have uploaded and liked.
+- **Categorized Posts**: VidVerse organizes videos into various categories, allowing users to browse specific content genres and discover new videos of interest.
+- **Search Functionality**: The application features a convenient search bar that simultaneously searches through video captions and user profiles, making it easy for users to find relevant content.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Tech Stack
+- **Frontend**: The frontend of VidVerse is built using Next.js, a popular React framework, and incorporates TypeScript for improved type safety and development efficiency.
+- **Backend**: For data storage, VidVerse employs Sanity, a flexible and customizable headless CMS (Content Management System).
+- **State Management**: The application utilizes Zustand, a lightweight state management library, to persistently store user data.
+- **Authentication**: VidVerse integrates Google Auth for secure and reliable user authentication.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Setup and Usage
+To access and use VidVerse, you can visit the deployed application at https://vid-verse-lmmk.vercel.app/.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+To set up and run VidVerse on your local machine, follow these steps:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. Clone the repository:
+   ```
+   git clone https://github.com/your-username/vidverse.git
+   ```
 
-## Learn More
+2. Install dependencies:
+   ```
+   cd vidverse
+   npm install
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+3. Configure environment variables:
+   - Create a `.env.development` file in the root directory.
+   - Add the necessary environment variables, such as API keys and configuration details, to the file.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. Start the development server:
+   ```
+   npm run dev
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+5. Access VidVerse in your browser at `http://localhost:3000`.
 
-## Deploy on Vercel
+## Contributing
+Contributions to VidVerse are welcome! If you'd like to contribute to the project, please follow these guidelines:
+- Fork the repository and create a new branch for your feature or bug fix.
+- Commit your changes with descriptive commit messages.
+- Push your branch to your forked repository.
+- Open a pull request, explaining the purpose and changes of your contribution.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Contact
+If you have any questions or suggestions regarding VidVerse, feel free to reach out to us at shubhjhawar78@gmail.com.
+
+Thank you for using VidVerse! We hope you enjoy your video-sharing experience.
