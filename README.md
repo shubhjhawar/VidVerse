@@ -25,7 +25,7 @@ To set up and run VidVerse on your local machine, follow these steps:
 
 1. Clone the repository:
    ```
-   git clone [https://github.com/your-username/vidverse.git](https://github.com/shubhjhawar/VidVerse.git)
+   git clone https://github.com/shubhjhawar/VidVerse.git
    ```
 
 2. Install dependencies:
